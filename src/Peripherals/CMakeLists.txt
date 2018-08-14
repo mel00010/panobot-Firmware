@@ -22,6 +22,7 @@ target_sources(Peripherals
 target_link_libraries(Peripherals
 	PUBLIC
 		HAL
+		main
 		c
 		m
 		nosys

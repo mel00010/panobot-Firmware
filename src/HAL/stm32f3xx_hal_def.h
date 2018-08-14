@@ -43,7 +43,7 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "../stm32f3xx.h"
+#include <stm32f3xx.h>
 #if defined USE_LEGACY
 #include "Legacy/stm32_hal_legacy.h"
 #endif

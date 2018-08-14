@@ -111,6 +111,7 @@ target_sources(HAL
 )
 target_link_libraries(HAL
 	PUBLIC
+		main
 		c
 		m
 		nosys
