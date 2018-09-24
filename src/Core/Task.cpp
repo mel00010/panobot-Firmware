@@ -18,5 +18,9 @@
  * along with panobot-Firmware.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
 
+#include "Task.hpp"
 
+namespace Core {
+
+} /* namespace Core */
 

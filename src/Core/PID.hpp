@@ -1,5 +1,5 @@
 /******************************************************************************
- * Scheduler.hpp
+ * PID.hpp
  * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panobot-Firmware.
@@ -17,29 +17,43 @@
  * You should have received a copy of the GNU General Public License
  * along with panobot-Firmware.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-#ifndef SRC_CORE_SCHEDULER_HPP_
-#define SRC_CORE_SCHEDULER_HPP_
-
-#include "PID.hpp"
-#include "Task.hpp"
+#ifndef SRC_CORE_PID_HPP_
+#define SRC_CORE_PID_HPP_
 
 namespace Core {
 
-class Scheduler {
+/**
+ * Holds a tasks process ID
+ */
+class PID {
 	public:
-		Scheduler();
+		bool operator==(const PID& rhs) const {
+			return PID == rhs.PID;
+		}
+		bool operator!=(const PID& rhs) const {
+			return PID != rhs.PID;
+		}
+		bool operator<(const PID& rhs) const {
+			return PID < rhs.PID;
+		}
+		bool operator>(const PID& rhs) const {
+			return PID > rhs.PID;
+		}
+		bool operator<=(const PID& rhs) const {
+			return PID <= rhs.PID;
+		}
+		bool operator>=(const PID& rhs) const {
+			return PID >= rhs.PID;
+		}
 
 	public:
-		void tick();
-		const PID addTask(const Task& task);
-
-
+		unsigned int PID;
 };
 
-void initializeScheduler();
-void dispatchTask(Task* task);
 
 
 } /* namespace Core */
 
-#endif /* SRC_CORE_SCHEDULER_HPP_ */
+
+
+#endif /* SRC_CORE_PID_HPP_ */

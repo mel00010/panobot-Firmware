@@ -1,5 +1,5 @@
 /******************************************************************************
- * Scheduler.hpp
+ * TaskState.hpp
  * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panobot-Firmware.
@@ -17,29 +17,26 @@
  * You should have received a copy of the GNU General Public License
  * along with panobot-Firmware.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-#ifndef SRC_CORE_SCHEDULER_HPP_
-#define SRC_CORE_SCHEDULER_HPP_
-
-#include "PID.hpp"
-#include "Task.hpp"
+#ifndef SRC_CORE_TASKSTATE_HPP_
+#define SRC_CORE_TASKSTATE_HPP_
 
 namespace Core {
 
-class Scheduler {
-	public:
-		Scheduler();
-
-	public:
-		void tick();
-		const PID addTask(const Task& task);
-
-
+/**
+ * @brief Describes the state of a task
+ */
+enum class TaskState {
+		NULL,		//!< NULL
+		RUNNING,	//!< RUNNING
+		SUSPENDED,	//!< SUSPENDED
+		WAITING,	//!< WAITING
+		SUCCESS,	//!< SUCCESS
+		FAILURE,	//!< FAILURE
+		TERMINATED	//!< TERMINATED
 };
-
-void initializeScheduler();
-void dispatchTask(Task* task);
-
 
 } /* namespace Core */
 
-#endif /* SRC_CORE_SCHEDULER_HPP_ */
+
+
+#endif /* SRC_CORE_TASKSTATE_HPP_ */

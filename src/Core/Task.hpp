@@ -20,9 +20,81 @@
 #ifndef SRC_CORE_TASK_HPP_
 #define SRC_CORE_TASK_HPP_
 
+#include "Deadline.hpp"
+#include "PID.hpp"
+#include "Priority.hpp"
+#include "TaskState.hpp"
+
 namespace Core {
 
+/**
+ * Represents a task
+ */
 class Task {
+	public:
+		Task(); //TODO Add arguments
+
+
+	public:
+		const PID& getPID() const {
+			return const_cast<const PID&>(pid);
+		}
+		const Priority& getPriority() const {
+			return const_cast<const Priority&>(priority);
+		}
+		const Deadline& getDeadline() const {
+			return const_cast<const Deadline&>(deadline);
+		}
+		const TaskState& getTaskState() const {
+			return const_cast<const TaskState&>(state);
+		}
+
+		bool setPID(const PID& new_pid) {
+			pid = new_pid;
+			return true;
+		}
+		bool setPriority(const Priority& new_priority) {
+			priority = new_priority;
+			return true;
+		}
+		bool setDeadline(const Deadline& new_deadline) {
+			deadline = new_deadline;
+			return true;
+		}
+		bool setTaskState(const TaskState& new_state) {
+			state = new_state;
+			return true;
+		}
+
+	public:
+		bool operator==(const Task& rhs) const {
+			return getPID() == rhs.getPID();
+		}
+		bool operator!=(const Task& rhs) const {
+			return getPID() != rhs.getPID();
+		}
+		bool operator<(const Task& rhs) const {
+			return getPID() < rhs.getPID();
+		}
+		bool operator>(const Task& rhs) const {
+			return getPID() > rhs.getPID();
+		}
+		bool operator<=(const Task& rhs) const {
+			return getPID() <= rhs.getPID();
+		}
+		bool operator>=(const Task& rhs) const {
+			return getPID() >= rhs.getPID();
+		}
+
+	protected:
+		PID pid;
+
+		Priority priority;
+		Deadline deadline;
+
+		TaskState state;
+		bool interrruptable;
+		bool recurring;
 
 };
 

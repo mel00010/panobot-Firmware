@@ -1,5 +1,5 @@
 /******************************************************************************
- * Scheduler.hpp
+ * Deadline.hpp
  * Copyright (C) 2018  Mel McCalla <melmccalla@gmail.com>
  *
  * This file is part of panobot-Firmware.
@@ -17,29 +17,22 @@
  * You should have received a copy of the GNU General Public License
  * along with panobot-Firmware.  If not, see <http://www.gnu.org/licenses/>.
  *****************************************************************************/
-#ifndef SRC_CORE_SCHEDULER_HPP_
-#define SRC_CORE_SCHEDULER_HPP_
-
-#include "PID.hpp"
-#include "Task.hpp"
+#ifndef SRC_CORE_DEADLINE_HPP_
+#define SRC_CORE_DEADLINE_HPP_
 
 namespace Core {
 
-class Scheduler {
+class Deadline {
 	public:
-		Scheduler();
+		Deadline(int milliseconds); //TODO Add arguments to Deadline constructor
 
 	public:
-		void tick();
-		const PID addTask(const Task& task);
-
+		int milliseconds_to_ticks(int milliseconds);
 
 };
 
-void initializeScheduler();
-void dispatchTask(Task* task);
-
-
 } /* namespace Core */
 
-#endif /* SRC_CORE_SCHEDULER_HPP_ */
+
+
+#endif /* SRC_CORE_DEADLINE_HPP_ */
